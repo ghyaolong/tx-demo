@@ -5,6 +5,7 @@ import com.cube.txdemo.entity.SysBalance;
 import com.cube.txdemo.service.SysBalanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
@@ -20,7 +21,7 @@ public class SysBalanceServiceImpl implements SysBalanceService {
     @Autowired
     private SysBalanceDao sysBalanceDao;
 
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void updateBalance(BigDecimal amount) {
         SysBalance balance = sysBalanceDao.selectByPrimaryKey(1);

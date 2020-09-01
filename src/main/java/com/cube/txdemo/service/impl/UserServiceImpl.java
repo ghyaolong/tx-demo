@@ -32,9 +32,10 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public void transfer(BigDecimal amount) {
+    public void transfer(BigDecimal amount) throws SQLException{
         sysBalanceService.updateBalance(amount);
         sysLogService.addLog("zhangsan",amount);
-//        if(true) throw new SQLException("sql异常");
+        if(true) throw new SQLException("sql异常");
+        //if(true) throw new RuntimeException("RunTime异常");
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
+import java.sql.SQLException;
 
 /**
  * @author yaochenglong
@@ -20,7 +21,8 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/transfer")
-    public void transfer(){
+    public void transfer() throws SQLException {
         userService.transfer(BigDecimal.valueOf(20));
+
     }
 }

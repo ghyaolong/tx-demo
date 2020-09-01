@@ -5,6 +5,8 @@ import com.cube.txdemo.entity.SysLog;
 import com.cube.txdemo.service.SysLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -21,6 +23,7 @@ public class SysLogServiceImpl implements SysLogService {
     @Autowired
     private SysLogDao sysLogDao;
 
+    @Transactional(propagation = Propagation.REQUIRED)
     @Override
     public void addLog(String userName, BigDecimal amount) {
         SysLog log = new SysLog();
